@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = `http://omdbapi.com/?apikey=${import.meta.env.VITE_API_KEY}`;
+const URL = `https://omdbapi.com/?apikey=${import.meta.env.VITE_API_KEY}`;
 
 export async function loadSearchedMovies(query: string, page: number) {
   const { data } = await axios.get(`${URL}&s=${query}&page=${page}`);
