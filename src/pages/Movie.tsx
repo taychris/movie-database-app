@@ -6,37 +6,8 @@ import MovieDetails from "@/components/movie/MovieDetails";
 import Ratings from "@/components/movie/Ratings";
 import { Separator } from "@/components/ui/separator";
 import { loadMovieDetails } from "@/services/apiCalls";
-import { Rating } from "@/types/types";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-
-type DetailedMovie = {
-  Title: string
-  Year: string
-  Rated: string
-  Released: string
-  Runtime: string
-  Genre: string
-  Director: string
-  Writer: string
-  Actors: string
-  Plot: string
-  Language: string
-  Country: string
-  Awards: string
-  Poster: string
-  Ratings: Rating[]
-  Metascore: string
-  imdbRating: string
-  imdbVotes: string
-  Type: string
-  DVD: string
-  BoxOffice: string
-  Production: string
-  Website: string
-  Response: string
-  imdbID: string
-}
 
 const Movie = () => {
   const { imdbID } = useParams();
@@ -51,6 +22,7 @@ const Movie = () => {
         <BackButton />
         <FavoritesButton />
       </div>
+      {isLoading && <p>Loading...</p>}
       {isSuccess && 
       <>
         <div className="grid gap-5 md:grid-cols-2">
