@@ -2,20 +2,23 @@ import { MovieCardType } from "@/types/types";
 import { create, StateCreator } from "zustand";
 import { persist, PersistOptions } from "zustand/middleware";
 
-type FavoriteStore = {
+type MovieStore = {
   favorites: MovieCardType[];
+  prevQuery: string,
   toggleFavorite: (product: MovieCardType) => void;
+  setPrevQuery: (prevQuery: string) => void;
 };
 
 type PersistStore = (
-  config: StateCreator<FavoriteStore>,
-  options: PersistOptions<FavoriteStore>
-) => StateCreator<FavoriteStore>;
+  config: StateCreator<MovieStore>,
+  options: PersistOptions<MovieStore>
+) => StateCreator<MovieStore>;
 
-export const useFavoriteStore = create<FavoriteStore, []>(
+export const useMovieStore = create<MovieStore, []>(
   (persist as PersistStore)(
-    (set, get): FavoriteStore => ({
+    (set, get): MovieStore => ({
       favorites: [],
+      prevQuery: "",
       toggleFavorite: (favorite) => {
         const { favorites } = get();
         const indexOfFavorite = favorites.findIndex(
@@ -31,6 +34,7 @@ export const useFavoriteStore = create<FavoriteStore, []>(
           favorites,
         });
       },
+      setPrevQuery: (prevQuery) => set({ prevQuery })
     }),
     {
       name: "favorite-store",

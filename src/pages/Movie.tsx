@@ -3,6 +3,7 @@ import FavoritesButton from "@/components/home/FavoritesButton";
 import Cast from "@/components/movie/Cast";
 import Heading from "@/components/movie/Heading";
 import MovieDetails from "@/components/movie/MovieDetails";
+import MovieSkeleton from "@/components/movie/MovieSkeleton";
 import Ratings from "@/components/movie/Ratings";
 import { Separator } from "@/components/ui/separator";
 import { loadMovieDetails } from "@/services/apiCalls";
@@ -20,6 +21,7 @@ const Movie = () => {
   });
 
   useEffect(() => {
+    window.scrollTo(0,0)
     if (data) setTitle(data.Title);
   }, [data]);
 
@@ -33,10 +35,10 @@ const Movie = () => {
           <BackButton />
           <FavoritesButton />
         </div>
-        {isLoading && <p>Loading...</p>}
+        {isLoading && <MovieSkeleton/>}
         {isSuccess && (
           <>
-            <div className="grid gap-5 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
               <Heading
                 Title={data.Title}
                 imdbID={data.imdbID}
@@ -53,7 +55,7 @@ const Movie = () => {
               <div className="flex flex-col gap-5 lg:flex-row">
                 <img
                   src={data.Poster}
-                  className="w-full max-w-xs rounded-xl"
+                  className="w-full max-w-xs shadow-lg rounded-xl shadow-slate-400"
                   alt={`${data.Title} poster`}
                 />
                 <MovieDetails

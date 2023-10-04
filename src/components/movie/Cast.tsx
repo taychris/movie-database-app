@@ -8,7 +8,7 @@ type Cast = {
 
 const Cast = ({ Director, Writer, Actors }: Cast) => {
   return (
-    <ul className="grid grid-cols-3 gap-4">
+    <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3">
       <li>
         <h1>Director</h1>
         <Text entry={Director} />

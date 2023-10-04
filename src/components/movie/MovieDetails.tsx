@@ -33,7 +33,7 @@ const MovieDetails = ({
     { label: "website", data: Website },
   ];
   return (
-    <ul className="grid grid-cols-3 md:grid-cols-1 h-max w-full md:max-w-[200px] gap-3">
+    <ul className="grid grid-cols-2 lg:grid-cols-1 h-max w-full md:max-w-[200px] gap-3">
       {movie.map((item, index) => (
         <Fragment key={index}>
           {item.data && (

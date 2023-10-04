@@ -1,10 +1,10 @@
-import { useFavoriteStore } from "@/stores/favorites";
+import { useMovieStore } from "@/stores/favorites";
 import { Star } from "lucide-react";
-import { useToast } from "../ui/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 import { MovieCardType } from "@/types/types";
 
 const AddToFavoritesButton = ({ Title, imdbID, Year, Poster }: MovieCardType) => {
-  const { favorites, toggleFavorite } = useFavoriteStore();
+  const { favorites, toggleFavorite } = useMovieStore();
   const { toast } = useToast();
 
   function handleFavorite() {
@@ -16,7 +16,7 @@ const AddToFavoritesButton = ({ Title, imdbID, Year, Poster }: MovieCardType) =>
       });
     } else {
       toast({
-        title: "Removed from favorites 🫡",
+        title: "Removed from favorites 🗑️",
         description: `${Title} was removed.`,
       });
     }

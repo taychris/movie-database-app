@@ -1,11 +1,11 @@
 import BackButton from "@/components/BackButton";
 import MovieCard from "@/components/home/MovieCard";
 import AddToFavoritesButton from "@/components/movie/AddToFavoritesButton";
-import { useFavoriteStore } from "@/stores/favorites";
+import { useMovieStore } from "@/stores/favorites";
 import { Helmet } from "react-helmet";
 
 const Favorites = () => {
-  const { favorites } = useFavoriteStore();
+  const { favorites } = useMovieStore();
 
   return (
     <>

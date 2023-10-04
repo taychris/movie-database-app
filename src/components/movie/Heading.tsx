@@ -1,6 +1,6 @@
 import { Calendar, PlayCircleIcon } from "lucide-react";
 import AddToFavoritesButton from "./AddToFavoritesButton";
-import { Separator } from "../ui/separator";
+import { Separator } from "@/components/ui/separator";
 import { Text } from "./DetailsText";
 
 type Details = {
