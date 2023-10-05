@@ -2,16 +2,16 @@ import { SearchIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 type Props = {
-    searchMovies: (e: React.FormEvent) => void,
-    searchText: string,
-    setSearchText: React.Dispatch<React.SetStateAction<string>>
+  searchMovies: (e: React.FormEvent) => void,
+  searchText: string,
+  setSearchText: React.Dispatch<React.SetStateAction<string>>
 }
 
 const SearchBar = ({searchMovies, searchText, setSearchText} : Props) => {
   return (
     <form className="relative order-2 w-full sm:order-1" onSubmit={searchMovies}>
       <Input
-        placeholder="Search.."
+        placeholder="Batman.."
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
         required

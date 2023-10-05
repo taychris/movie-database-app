@@ -1,8 +1,10 @@
 import BackButton from "@/components/BackButton";
+import StatusMessage from "@/components/StatusMessage";
 import MovieCard from "@/components/home/MovieCard";
 import AddToFavoritesButton from "@/components/movie/AddToFavoritesButton";
 import { useMovieStore } from "@/stores/favorites";
 import { Helmet } from "react-helmet";
+import Ghost from "../assets/imgs/ghost.svg";
 
 const Favorites = () => {
   const { favorites } = useMovieStore();
@@ -35,9 +37,10 @@ const Favorites = () => {
             ))}
           </div>
         ) : (
-          <p className="font-light">
-            Looks like your favorite movie list is empty 🫠
-          </p>
+          <StatusMessage
+            text="Your favorite movie list is empty."
+            imgSource={Ghost}
+          />
         )}
       </section>
     </>

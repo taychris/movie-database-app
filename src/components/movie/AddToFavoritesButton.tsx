@@ -7,7 +7,7 @@ const AddToFavoritesButton = ({ Title, imdbID, Year, Poster }: MovieCardType) =>
   const { favorites, toggleFavorite } = useMovieStore();
   const { toast } = useToast();
 
-  function handleFavorite() {
+  const handleFavorite = () => {
     toggleFavorite({ Title, imdbID, Year, Poster });
     if (favorites.some((favorite) => favorite.imdbID === imdbID)) {
       toast({

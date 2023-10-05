@@ -10,7 +10,7 @@ type Movie = {
 
 const MovieCard = ({ Title, Year, imdbID, Poster, Favorite }: Movie) => {
   return (
-    <div className="relative overflow-hidden font-light text-left text-white bg-gray-400 aspect-[2/3] rounded-xl group">
+    <div className="relative overflow-hidden font-light text-left text-white bg-gray-400 aspect-[2/3] rounded-xl group border">
       <div className="absolute bottom-0 left-0 z-10 w-full px-3 pb-2 bg-gradient-to-t from-black to-black/0">
         <h1 className="text-xl text-white truncate">{Title}</h1>
         <p className="text-gray-200 font-extralight">{Year}</p>

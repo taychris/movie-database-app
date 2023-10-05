@@ -9,7 +9,7 @@ const Home = () => {
   const [searchText, setSearchText] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
 
-  function searchMovies(e: React.FormEvent) {
+  const searchMovies = (e: React.FormEvent) => {
     e.preventDefault();
     setSearchParams({ query: searchText });
   }
@@ -28,8 +28,8 @@ const Home = () => {
       <Helmet>
         <title>Home - Movie Database</title>
       </Helmet>
-      <section className="space-y-5">
-        <div className="flex flex-wrap justify-end w-full gap-2 sm:gap-5 sm:flex-nowrap sm:justify-between">
+      <section>
+        <div className="flex flex-wrap justify-end w-full gap-2 mb-10 sm:gap-5 sm:flex-nowrap sm:justify-between">
           <SearchBar
             searchMovies={searchMovies}
             searchText={searchText}
