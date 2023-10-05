@@ -1,15 +1,31 @@
 import { SearchIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
-type Props = {
-  searchMovies: (e: React.FormEvent) => void,
-  searchText: string,
-  setSearchText: React.Dispatch<React.SetStateAction<string>>
-}
+const SearchBar = () => {
+  const [searchText, setSearchText] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
 
-const SearchBar = ({searchMovies, searchText, setSearchText} : Props) => {
+  const searchMovies = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSearchParams({ query: searchText });
+  };
+
+  useEffect(() => {
+    const query = searchParams.get("query");
+    if (query) {
+      setSearchText(query);
+    } else {
+      setSearchText("");
+    }
+  }, [searchParams]);
+
   return (
-    <form className="relative order-2 w-full sm:order-1" onSubmit={searchMovies}>
+    <form
+      className="relative order-2 w-full sm:order-1"
+      onSubmit={searchMovies}
+    >
       <Input
         placeholder="Batman.."
         value={searchText}
