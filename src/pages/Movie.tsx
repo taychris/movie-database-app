@@ -13,6 +13,8 @@ import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import Error from "../assets/imgs/error.svg";
 import StatusMessage from "@/components/StatusMessage";
+import { motion } from "framer-motion";
+import { fadeInScale, parentVariants } from "@/lib/animations";
 
 const Movie = () => {
   const [title, setTitle] = useState("");
@@ -32,7 +34,12 @@ const Movie = () => {
       <Helmet>
         <title>{title || ""} - Movie Database</title>
       </Helmet>
-      <section className="flex flex-col gap-5 text-left">
+      <motion.section
+        variants={parentVariants}
+        initial="hidden"
+        whileInView="visible"
+        className="flex flex-col gap-5 text-left"
+      >
         <div className="flex justify-between w-full gap-5">
           <BackButton />
           <FavoritesButton />
@@ -61,7 +68,7 @@ const Movie = () => {
                 <Ratings rating={data.Ratings} votes={data.imdbVotes} />
               </div>
               <div className="grid gap-5 md:grid-cols-2">
-                <div className="flex flex-col gap-5 lg:flex-row">
+                <motion.div variants={fadeInScale} className="flex flex-col gap-5 lg:flex-row">
                   <img
                     src={data.Poster}
                     className="w-full max-w-xs shadow-lg rounded-xl shadow-slate-400"
@@ -77,8 +84,8 @@ const Movie = () => {
                     Type={data.Type}
                     Website={data.Website}
                   />
-                </div>
-                <div className="space-y-4">
+                </motion.div>
+                <motion.div variants={fadeInScale} className="space-y-4">
                   <p className="text-lg font-light">{data.Plot}</p>
                   <Separator />
                   <Cast
@@ -86,12 +93,12 @@ const Movie = () => {
                     Writer={data.Writer}
                     Actors={data.Actors}
                   />
-                </div>
+                </motion.div>
               </div>
             </>
           )
         )}
-      </section>
+      </motion.section>
     </>
   );
 };

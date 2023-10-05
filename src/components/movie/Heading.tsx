@@ -2,6 +2,8 @@ import { Calendar, PlayCircleIcon } from "lucide-react";
 import AddToFavoritesButton from "./AddToFavoritesButton";
 import { Separator } from "@/components/ui/separator";
 import { Text } from "./DetailsText";
+import { motion } from "framer-motion";
+import { fadeInScale } from "@/lib/animations";
 
 type Details = {
   Title: string;
@@ -25,10 +27,9 @@ const Heading = ({
   Rated,
 }: Details) => {
   return (
-    <div className="space-y-2">
+    <motion.div variants={fadeInScale} className="space-y-2">
       <h1 className="text-4xl font-medium">
-        {Title}
-        {" "}
+        {Title}{" "}
         <AddToFavoritesButton
           Title={Title}
           imdbID={imdbID}
@@ -37,15 +38,23 @@ const Heading = ({
         />
       </h1>
       <div className="flex flex-wrap">
-        <Text entry={Genre} />
-        <div className="px-2">
-          <Separator orientation="vertical" />
-        </div>
-        <Text entry={Released} />
-        <div className="px-2">
-          <Separator orientation="vertical" />
-        </div>
-        <Text entry={Rated} />
+        {Genre && (
+          <>
+            <Text entry={Genre} />
+            <div className="px-2">
+              <Separator orientation="vertical" />
+            </div>
+          </>
+        )}
+        {Released && (
+          <>
+            <Text entry={Released} />
+            <div className="px-2">
+              <Separator orientation="vertical" />
+            </div>
+          </>
+        )}
+        {Rated && <Text entry={Rated} />}
       </div>
 
       <div className="flex gap-5">
@@ -58,7 +67,7 @@ const Heading = ({
           <p>{Runtime}</p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export default Heading;
