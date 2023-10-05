@@ -37,7 +37,7 @@ const Movie = () => {
       <motion.section
         variants={parentVariants}
         initial="hidden"
-        whileInView="visible"
+        animate="visible"
         className="flex flex-col gap-5 text-left"
       >
         <div className="flex justify-between w-full gap-5">
