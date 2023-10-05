@@ -16,6 +16,7 @@ It allows users to search for specific movies based on their title. The app also
 - React-Helmet
 - TailwindCSS
 - Shadcn UI
+- Framer Motion
 - Vercel
 
 # Script descriptions
