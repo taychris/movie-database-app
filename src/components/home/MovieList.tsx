@@ -29,8 +29,8 @@ const MovieList = () => {
       setPrevQuery(query);
     }
     //the part below is necessary, to avoid a specific search bug
-    if(!query) {
-      setPrevQuery("")
+    if (!query) {
+      setPrevQuery("");
     }
   }, [query, prevQuery]);
 
@@ -86,10 +86,17 @@ const MovieList = () => {
               />
             ))}
           </InfiniteScroll>
-          {!hasNextPage && <p className="mt-10 text-sm font-light text-center">You've reached the end 🤌</p>}
+          {!hasNextPage && (
+            <p className="mt-10 text-sm font-light text-center">
+              You've reached the end 🤌
+            </p>
+          )}
         </>
       ) : query && movieList?.length === 0 ? (
-        <StatusMessage text="No results. Try to be more exact." imgSource={Loupe} />
+        <StatusMessage
+          text="No results. Try to be more exact."
+          imgSource={Loupe}
+        />
       ) : (
         <StatusMessage
           text="Start by typing in your desired movie title."

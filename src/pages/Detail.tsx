@@ -16,7 +16,7 @@ import StatusMessage from "@/components/StatusMessage";
 import { motion } from "framer-motion";
 import { fadeInScale, parentVariants } from "@/lib/animations";
 
-const Movie = () => {
+const Detail = () => {
   const [title, setTitle] = useState("");
   const { imdbID } = useParams();
   const { data, isLoading } = useQuery({
@@ -102,4 +102,4 @@ const Movie = () => {
     </>
   );
 };
-export default Movie;
+export default Detail;
