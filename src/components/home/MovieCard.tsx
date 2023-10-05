@@ -1,11 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import {
-  ease,
-  fadeIn,
-  fadeUp,
-  parentVariants,
-} from "@/lib/animations";
+import { ease, fadeIn, fadeUp, parentVariants } from "@/lib/animations";
 
 type Movie = {
   Title: string;
@@ -21,6 +16,7 @@ const MovieCard = ({ Title, Year, imdbID, Poster, Favorite }: Movie) => {
       variants={parentVariants}
       initial="hidden"
       whileInView="visible"
+      exit="hidden"
       className="relative overflow-hidden font-light text-left text-white bg-gray-200 aspect-[2/3] rounded-xl border"
     >
       <Link
@@ -39,23 +35,22 @@ const MovieCard = ({ Title, Year, imdbID, Poster, Favorite }: Movie) => {
           alt={`${Title} poster`}
         />
       </Link>
-      <div className="absolute bottom-0 left-0 z-10 w-full px-3 pb-2 bg-gradient-to-t from-black to-black/0">
-        <motion.h1
-          variants={fadeUp}
-          className="text-xl text-white truncate"
+      {Favorite && (
+        <motion.div
+          variants={fadeIn}
+          className="absolute top-0 right-0 p-2 z-[2]"
         >
+          {Favorite}
+        </motion.div>
+      )}
+      <div className="absolute bottom-0 left-0 z-10 w-full px-3 pb-2 bg-gradient-to-t from-black to-black/0">
+        <motion.h1 variants={fadeUp} className="text-xl text-white truncate">
           {Title}
         </motion.h1>
-        <motion.p
-          variants={fadeUp}
-          className="text-gray-200 font-extralight"
-        >
+        <motion.p variants={fadeUp} className="text-gray-200 font-extralight">
           {Year}
         </motion.p>
       </div>
-      {Favorite && (
-        <div className="absolute top-0 right-0 p-2 z-[2]">{Favorite}</div>
-      )}
     </motion.div>
   );
 };
