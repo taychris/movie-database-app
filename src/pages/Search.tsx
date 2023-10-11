@@ -1,6 +1,6 @@
-import FavoritesButton from "@/components/home/FavoritesButton";
-import MovieList from "@/components/home/MovieList";
-import SearchBar from "@/components/home/SearchBar";
+import FavoritesButton from "@/components/search/FavoritesButton";
+import MovieList from "@/components/search/MovieList";
+import SearchBar from "@/components/search/SearchBar";
 import { Helmet } from "react-helmet";
 
 const Search = () => {

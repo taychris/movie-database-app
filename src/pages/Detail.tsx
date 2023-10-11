@@ -1,10 +1,10 @@
 import BackButton from "@/components/BackButton";
-import FavoritesButton from "@/components/home/FavoritesButton";
-import Cast from "@/components/movie/Cast";
-import Heading from "@/components/movie/Heading";
-import MovieDetails from "@/components/movie/MovieDetails";
-import MovieSkeleton from "@/components/movie/MovieSkeleton";
-import Ratings from "@/components/movie/Ratings";
+import FavoritesButton from "@/components/search/FavoritesButton";
+import Cast from "@/components/details/Cast";
+import Heading from "@/components/details/Heading";
+import MovieDetails from "@/components/details/MovieDetails";
+import MovieSkeleton from "@/components/details/MovieSkeleton";
+import Ratings from "@/components/details/Ratings";
 import { Separator } from "@/components/ui/separator";
 import { loadMovieDetails } from "@/services/apiCalls";
 import { useQuery } from "@tanstack/react-query";

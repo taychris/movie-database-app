@@ -1,60 +1,16 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
 import MovieCard from "./MovieCard";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { loadSearchedMovies } from "@/services/apiCalls";
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { MovieCardType } from "@/types/types";
 import MovieCardSkeleton from "./MovieCardSkeleton";
-import { useMovieStore } from "@/stores/favorites";
 import Popcorn from "../../assets/imgs/popcorn.svg";
 import Loupe from "../../assets/imgs/loupe.svg";
 import Error from "../../assets/imgs/error.svg";
 import StatusMessage from "../StatusMessage";
+import { useMovieList } from "@/hooks/useMovieList";
 
 const MovieList = () => {
-  const { prevQuery, setPrevQuery } = useMovieStore();
-  const search = useLocation().search;
-  const query = new URLSearchParams(search).get("query") || "";
-
-  const removeFromCache = () => {
-    return new Promise((resolve) => resolve(remove()));
-  };
-
-  useEffect(() => {
-    if (query.length > 0 && query !== prevQuery) {
-      removeFromCache().then(() => {
-        refetch();
-      });
-      setPrevQuery(query);
-    }
-    //the part below is necessary, to avoid a specific search bug
-    if (!query) {
-      setPrevQuery("");
-    }
-  }, [query, prevQuery]);
-
-  const {
-    data,
-    fetchNextPage,
-    hasNextPage,
-    isLoading,
-    isError,
-    refetch,
-    remove,
-  } = useInfiniteQuery({
-    queryKey: ["movies"],
-    queryFn: ({ pageParam = 1 }) => loadSearchedMovies(query, pageParam),
-    getNextPageParam: (prevPage) => {
-      //calculate how many pages there are
-      const totalPages = Math.ceil(prevPage.totalResults / 10);
-      return totalPages >= prevPage.page ? prevPage.page : null;
-    },
-  });
-
-  const movieList = data?.pages
-    .map((page) => (page.Search ? page.Search : []))
-    .flat();
+  const { query, movieList, isLoading, isError, fetchNextPage, hasNextPage } =
+    useMovieList();
 
   return (
     <>

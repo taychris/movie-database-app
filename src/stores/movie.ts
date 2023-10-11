@@ -24,7 +24,6 @@ export const useMovieStore = create<MovieStore, []>(
         const indexOfFavorite = favorites.findIndex(
           (fav) => fav.imdbID === favorite.imdbID
         );
-        // const findProduct = favorites.find((fav) => fav.imdbID === favorite.imdbID);
         if (indexOfFavorite > -1) {
           favorites.splice(indexOfFavorite, 1);
         } else {
@@ -37,7 +36,7 @@ export const useMovieStore = create<MovieStore, []>(
       setPrevQuery: (prevQuery) => set({ prevQuery })
     }),
     {
-      name: "favorite-store",
+      name: "movie-store",
     }
   )
 );

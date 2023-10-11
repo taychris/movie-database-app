@@ -1,4 +1,4 @@
-import { useMovieStore } from "@/stores/favorites";
+import { useMovieStore } from "@/stores/movie";
 import { Star } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { MovieCardType } from "@/types/types";

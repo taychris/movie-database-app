@@ -1,8 +1,8 @@
 import BackButton from "@/components/BackButton";
 import StatusMessage from "@/components/StatusMessage";
-import MovieCard from "@/components/home/MovieCard";
-import AddToFavoritesButton from "@/components/movie/AddToFavoritesButton";
-import { useMovieStore } from "@/stores/favorites";
+import MovieCard from "@/components/search/MovieCard";
+import AddToFavoritesButton from "@/components/details/AddToFavoritesButton";
+import { useMovieStore } from "@/stores/movie";
 import { Helmet } from "react-helmet";
 import Ghost from "../assets/imgs/ghost.svg";
 import { AnimatePresence } from "framer-motion";

@@ -1,25 +1,9 @@
 import { SearchIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchQuery } from "@/hooks/useSearchQuery";
 
 const SearchBar = () => {
-  const [searchText, setSearchText] = useState("");
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const searchMovies = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSearchParams({ query: searchText });
-  };
-
-  useEffect(() => {
-    const query = searchParams.get("query");
-    if (query) {
-      setSearchText(query);
-    } else {
-      setSearchText("");
-    }
-  }, [searchParams]);
+  const { searchMovies, searchText, setSearchText } = useSearchQuery();
 
   return (
     <form
@@ -30,7 +14,6 @@ const SearchBar = () => {
         placeholder="Batman.."
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
-        required
         className="pr-10"
       />
       <button

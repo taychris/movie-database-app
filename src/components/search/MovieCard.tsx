@@ -20,7 +20,7 @@ const MovieCard = ({ Title, Year, imdbID, Poster, Favorite }: Movie) => {
       className="relative overflow-hidden font-light text-left text-white bg-gray-200 aspect-[2/3] rounded-xl border"
     >
       <Link
-        to={`/movie/${imdbID}`}
+        to={`/details/${imdbID}`}
         title={Title}
         className="relative w-full h-full"
       >
